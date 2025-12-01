@@ -66,4 +66,6 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     implementation(libs.kotlinx.coroutines)
+
+    implementation(libs.koin.android)
 }

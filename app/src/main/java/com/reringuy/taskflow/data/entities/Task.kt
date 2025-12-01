@@ -14,7 +14,7 @@ data class Task(
     val id: Long,
     val title: String,
     val description: String,
-    val createdAt: Date,
-    val updatedAt: Date,
-    val excluded: Boolean,
+    val createdAt: Date = Date(),
+    val updatedAt: Date = Date(),
+    val excluded: Boolean = false,
 )

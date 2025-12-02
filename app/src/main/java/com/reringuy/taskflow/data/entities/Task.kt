@@ -13,7 +13,7 @@ data class Task(
     @PrimaryKey
     val id: Long,
     val title: String,
-    val description: String,
+    val description: String?,
     val createdAt: Date = Date(),
     val updatedAt: Date = Date(),
     val excluded: Boolean = false,

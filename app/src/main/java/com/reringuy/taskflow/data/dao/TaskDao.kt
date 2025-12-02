@@ -10,6 +10,9 @@ import com.reringuy.taskflow.data.entities.Task
 
 @Dao
 interface TaskDao {
+    @Query("SELECT * FROM tasks")
+    fun getAll(): List<Task>
+
     @Query("SELECT * FROM tasks WHERE id = :id")
     fun getTaskById(id: Long): Task?
 

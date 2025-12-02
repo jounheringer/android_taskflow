@@ -1,5 +1,6 @@
 package com.reringuy.taskflow
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.reringuy.taskflow.data.entities.Task
 import com.reringuy.taskflow.ui.components.TaskCardAdapter
 
@@ -52,5 +54,10 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = taskCardAdapter
 
+        val addFloatingButton = findViewById<FloatingActionButton>(R.id.activitiy_main_floating_action_button)
+
+        addFloatingButton.setOnClickListener {
+            startActivity(Intent(this, AddTaskActivity::class.java))
+        }
     }
 }

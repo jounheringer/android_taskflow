@@ -10,9 +10,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.reringuy.taskflow.AddTaskActivity
 import com.reringuy.taskflow.R
-import com.reringuy.taskflow.ui.components.TaskCardAdapter
+import com.reringuy.taskflow.addtask.AddTaskActivity
+import com.reringuy.taskflow.ui.adapter.TaskCardAdapter
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
@@ -50,5 +50,10 @@ class MainActivity : AppCompatActivity() {
         addFloatingButton.setOnClickListener {
             startActivity(Intent(this, AddTaskActivity::class.java))
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.refreshTaskList()
     }
 }

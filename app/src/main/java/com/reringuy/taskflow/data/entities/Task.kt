@@ -10,8 +10,8 @@ import java.util.Date
     indices = [Index(value = ["title"])]
 )
 data class Task(
-    @PrimaryKey
-    val id: Long,
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
     val title: String,
     val description: String?,
     val createdAt: Date = Date(),

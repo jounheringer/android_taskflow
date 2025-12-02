@@ -21,10 +21,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddTaskActivity"
-            android:exported="true">
-
-        </activity>
+            android:name=".addtask.AddTaskActivity"
+            android:exported="true"
+            />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.reringuy.taskflow.ui.components
+package com.reringuy.taskflow.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View

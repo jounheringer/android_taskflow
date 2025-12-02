@@ -1,5 +1,6 @@
 package com.reringuy.taskflow.di.modules
 
+import com.reringuy.taskflow.addtask.AddTaskViewModel
 import com.reringuy.taskflow.data.TaskFlowDatabase
 import com.reringuy.taskflow.data.repositories.TaskRepository
 import com.reringuy.taskflow.tasklist.TaskListViewModel
@@ -10,5 +11,6 @@ import org.koin.dsl.module
 val taskModule = module {
     single { get<TaskFlowDatabase>().taskDao() }
     singleOf(::TaskRepository)
+    singleOf(::AddTaskViewModel)
     viewModelOf(::TaskListViewModel)
 }

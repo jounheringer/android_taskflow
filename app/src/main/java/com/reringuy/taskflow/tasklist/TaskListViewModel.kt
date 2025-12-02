@@ -26,4 +26,8 @@ class TaskListViewModel(
             _taskList.postValue(taskRepository.getAll())
         }
     }
+
+    fun refreshTaskList() {
+        loadTaskList()
+    }
 }

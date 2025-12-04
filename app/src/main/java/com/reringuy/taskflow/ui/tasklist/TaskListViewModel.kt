@@ -1,4 +1,4 @@
-package com.reringuy.taskflow.tasklist
+package com.reringuy.taskflow.ui.tasklist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -29,5 +29,12 @@ class TaskListViewModel(
 
     fun refreshTaskList() {
         loadTaskList()
+    }
+
+    fun updateTask(task: Task) {
+        viewModelScope.launch(Dispatchers.IO) {
+            taskRepository.updateTask(task)
+            loadTaskList()
+        }
     }
 }

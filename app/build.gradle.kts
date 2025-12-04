@@ -41,6 +41,13 @@ android {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
+
+    ksp {
+        arg("room.schemaLocation", "$projectDir/database/versions/schemas")
+        arg("room.incremental", "true")
+        arg("room.expandProjection", "true")
+        arg("correctErrorTypes", "true")
+    }
 }
 
 dependencies {

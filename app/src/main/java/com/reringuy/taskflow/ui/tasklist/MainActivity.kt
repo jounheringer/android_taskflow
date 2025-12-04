@@ -1,4 +1,4 @@
-package com.reringuy.taskflow.tasklist
+package com.reringuy.taskflow.ui.tasklist
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.reringuy.taskflow.R
-import com.reringuy.taskflow.addtask.AddTaskActivity
 import com.reringuy.taskflow.ui.adapter.TaskCardAdapter
+import com.reringuy.taskflow.ui.addtask.AddTaskActivity
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
@@ -35,13 +35,14 @@ class MainActivity : AppCompatActivity() {
         val addFloatingButton = findViewById<FloatingActionButton>(R.id.activitiy_main_floating_action_button)
         val textView = findViewById<TextView>(R.id.activity_main_text_view)
 
-        taskCardAdapter = TaskCardAdapter()
+        taskCardAdapter = TaskCardAdapter(
+            onTaskCheckedChange = viewModel::updateTask
+        )
 
         viewModel.taskList.observe(this) { tasks ->
             textView.visibility = if (tasks.isEmpty()) TextView.VISIBLE else TextView.GONE
             taskCardAdapter.submitList(tasks)
         }
-
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = taskCardAdapter

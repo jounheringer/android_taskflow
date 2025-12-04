@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TaskFlow">
         <activity
-            android:name=".tasklist.MainActivity"
+            android:name=".ui.tasklist.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".addtask.AddTaskActivity"
+            android:name=".ui.addtask.AddTaskActivity"
             android:exported="true"
             />
     </application>

@@ -1,4 +1,4 @@
-package com.reringuy.taskflow.addtask
+package com.reringuy.taskflow.ui.addtask
 
 import android.os.Bundle
 import android.widget.Button

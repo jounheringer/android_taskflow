@@ -1,20 +1,27 @@
 package com.reringuy.taskflow.ui.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.reringuy.taskflow.R
 import com.reringuy.taskflow.data.entities.Task
 
-class TaskCardAdapter :
+class TaskCardAdapter(
+    private val onTaskCheckedChange: (Task) -> Unit
+) :
     ListAdapter<Task, TaskCardAdapter.ViewHolder>(DiffCallback()) {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.task_card_text_view)
+        val checkBox: CheckBox = view.findViewById(R.id.task_checkbox)
+        val cardView: CardView = view.findViewById(R.id.task_card_view)
     }
 
     class DiffCallback : DiffUtil.ItemCallback<Task>() {
@@ -39,5 +46,17 @@ class TaskCardAdapter :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val task = getItem(position)
         holder.textView.text = task.title
+        holder.checkBox.isChecked = task.done
+
+        holder.checkBox.setOnCheckedChangeListener { _, isChecked ->
+            onTaskCheckedChange(task.copy(done = isChecked))
+        }
+
+        holder.cardView.setOnClickListener {
+            onTaskCheckedChange(task.copy(done = !task.done))
+        }
+
+        holder.cardView.setCardBackgroundColor(if (task.done) Color.GREEN else Color.WHITE)
+        holder.textView.setTextColor(if (task.done) Color.WHITE else Color.BLACK)
     }
 }

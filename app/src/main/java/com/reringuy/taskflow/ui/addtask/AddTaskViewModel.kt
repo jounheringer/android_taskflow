@@ -1,4 +1,4 @@
-package com.reringuy.taskflow.addtask
+package com.reringuy.taskflow.ui.addtask
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

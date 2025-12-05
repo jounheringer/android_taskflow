@@ -3,4 +3,9 @@
     <string name="edit_content_description">Editar</string>
     <string name="add_content_description">Adicionar</string>
     <string name="empty_task_list_text">Nenhuma Task encontrada</string>
+    <string name="confirm_button">Confirmar</string>
+    <string name="cancel_button">Cancelar</string>
+    <string name="task_title">Titulo</string>
+    <string name="task_description">Descrição</string>
+    <string name="task_edit">Editar</string>
 </resources>

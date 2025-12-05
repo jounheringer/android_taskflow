@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
@@ -14,7 +15,8 @@ import com.reringuy.taskflow.R
 import com.reringuy.taskflow.data.entities.Task
 
 class TaskCardAdapter(
-    private val onTaskCheckedChange: (Task) -> Unit
+    private val onTaskCheckedChange: (Task) -> Unit,
+    private val onNavigateToEdit: (Long) -> Unit
 ) :
     ListAdapter<Task, TaskCardAdapter.ViewHolder>(DiffCallback()) {
 
@@ -22,6 +24,7 @@ class TaskCardAdapter(
         val textView: TextView = view.findViewById(R.id.task_card_text_view)
         val checkBox: CheckBox = view.findViewById(R.id.task_checkbox)
         val cardView: CardView = view.findViewById(R.id.task_card_view)
+        val imageButton: ImageButton = view.findViewById(R.id.task_edit_button)
     }
 
     class DiffCallback : DiffUtil.ItemCallback<Task>() {
@@ -54,6 +57,10 @@ class TaskCardAdapter(
 
         holder.cardView.setOnClickListener {
             onTaskCheckedChange(task.copy(done = !task.done))
+        }
+
+        holder.imageButton.setOnClickListener {
+            onNavigateToEdit(task.id)
         }
 
         holder.cardView.setCardBackgroundColor(if (task.done) Color.GREEN else Color.WHITE)

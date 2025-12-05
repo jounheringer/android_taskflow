@@ -24,6 +24,10 @@
             android:name=".ui.addtask.AddTaskActivity"
             android:exported="true"
             />
+        <activity
+            android:name=".ui.edit.EditTaskActivity"
+            android:exported="true"
+            />
     </application>
 
 </manifest>

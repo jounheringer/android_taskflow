@@ -13,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.reringuy.taskflow.R
 import com.reringuy.taskflow.ui.adapter.TaskCardAdapter
 import com.reringuy.taskflow.ui.addtask.AddTaskActivity
+import com.reringuy.taskflow.ui.edit.EditTaskActivity
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
@@ -32,11 +33,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
-        val addFloatingButton = findViewById<FloatingActionButton>(R.id.activitiy_main_floating_action_button)
+        val addFloatingButton =
+            findViewById<FloatingActionButton>(R.id.activitiy_main_floating_action_button)
         val textView = findViewById<TextView>(R.id.activity_main_text_view)
 
         taskCardAdapter = TaskCardAdapter(
-            onTaskCheckedChange = viewModel::updateTask
+            onTaskCheckedChange = viewModel::updateTask,
+            onNavigateToEdit = ::onNavigateToEdit
         )
 
         viewModel.taskList.observe(this) { tasks ->
@@ -56,5 +59,13 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         viewModel.refreshTaskList()
+    }
+
+    private fun onNavigateToEdit(id: Long) {
+        startActivity(
+            Intent(this, EditTaskActivity::class.java).apply {
+                putExtra(EditTaskActivity.EXTRA_TASK_ID, id)
+            }
+        )
     }
 }
